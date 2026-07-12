@@ -1,0 +1,36 @@
+{
+  "routines": [
+    {
+      "id": "post-piernas",
+      "type": "post-workout",
+      "title": "Estiramiento post-piernas",
+      "durationMinutes": 4,
+      "meta": "isquios, cuádriceps, glúteos",
+      "exercises": []
+    },
+    {
+      "id": "post-torso",
+      "type": "post-workout",
+      "title": "Estiramiento post-torso",
+      "durationMinutes": 4,
+      "meta": "espalda, pecho, hombros",
+      "exercises": []
+    },
+    {
+      "id": "post-cardio",
+      "type": "post-workout",
+      "title": "Estiramiento post-cardio",
+      "durationMinutes": 3,
+      "meta": "piernas, cadera, respiración",
+      "exercises": []
+    },
+    {
+      "id": "post-cuerpo-completo",
+      "type": "post-workout",
+      "title": "Estiramiento post-cuerpo completo",
+      "durationMinutes": 5,
+      "meta": "tren superior e inferior",
+      "exercises": []
+    }
+  ]
+}
