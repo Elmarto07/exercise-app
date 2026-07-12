@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marca Fit — Stretch Player</title>
+  <!-- Spine: DESIGN.md § stretch-player; EXPERIENCE.md § UJ-3 -->
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: #e5e5e5; display: flex; justify-content: center; padding: 24px; }
+    .phone { width: 390px; min-height: 844px; background: #FFFFFF; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 60px #00000030; display: flex; flex-direction: column; }
+    .status { height: 44px; }
+    .top { padding: 8px 16px; display: flex; justify-content: space-between; align-items: center; }
+    .exit { background: none; border: none; color: #737373; font-size: 16px; cursor: pointer; }
+    .progress-text { font-size: 13px; color: #737373; font-weight: 500; }
+    .progress-bar { display: flex; gap: 4px; padding: 0 16px; margin-top: 8px; }
+    .seg { flex: 1; height: 4px; border-radius: 2px; background: #E5E5E5; }
+    .seg.done { background: #22C55E; }
+    .seg.active { background: #22C55E; opacity: 0.5; }
+    .main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; text-align: center; }
+    .exercise-name { font-size: 20px; font-weight: 600; color: #171717; margin-bottom: 24px; }
+    .timer { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 48px; font-weight: 600; color: #171717; letter-spacing: -0.03em; }
+    .instruction { font-size: 16px; line-height: 1.5; color: #737373; margin-top: 32px; max-width: 320px; }
+    .controls { padding: 16px 16px 32px; display: flex; gap: 12px; }
+    .controls button { flex: 1; min-height: 48px; border-radius: 12px; font-size: 16px; font-weight: 500; cursor: pointer; }
+    .pause { background: #fff; border: 1px solid #E5E5E5; color: #171717; }
+    .next { background: #22C55E; border: none; color: #fff; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="status"></div>
+    <div class="top">
+      <button class="exit">Salir</button>
+      <span class="progress-text">2 de 5</span>
+      <span style="width: 48px"></span>
+    </div>
+    <div class="progress-bar">
+      <div class="seg done"></div>
+      <div class="seg active"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+    </div>
+    <div class="main">
+      <h2 class="exercise-name">Estiramiento de isquios</h2>
+      <div class="timer" aria-live="polite">0:32</div>
+      <p class="instruction">Inclínate hacia adelante manteniendo la espalda recta. Siente el estiramiento en la parte posterior del muslo.</p>
+    </div>
+    <div class="controls">
+      <button class="pause">Pausa</button>
+      <button class="next">Siguiente</button>
+    </div>
+  </div>
+</body>
+</html>

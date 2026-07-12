@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marca Fit — History View</title>
+  <!-- Spine: DESIGN.md § day-cell; EXPERIENCE.md § UJ-2 -->
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: #e5e5e5; display: flex; justify-content: center; padding: 24px; }
+    .phone { width: 390px; min-height: 844px; background: #FAFAFA; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 60px #00000030; }
+    .status { height: 44px; }
+    .nav { padding: 8px 16px; display: flex; align-items: center; gap: 12px; }
+    .back { font-size: 24px; color: #171717; cursor: pointer; }
+    .nav-title { font-size: 20px; font-weight: 600; }
+    .content { padding: 0 16px 24px; }
+    .summary { font-size: 13px; font-weight: 500; color: #737373; margin-bottom: 16px; }
+    .summary strong { color: #171717; font-size: 20px; font-weight: 700; display: block; margin-bottom: 4px; }
+    .toggle { display: flex; background: #E5E5E5; border-radius: 12px; padding: 4px; margin-bottom: 20px; }
+    .toggle span { flex: 1; text-align: center; padding: 10px; font-size: 14px; font-weight: 500; border-radius: 8px; cursor: pointer; color: #737373; }
+    .toggle span.active { background: #fff; color: #171717; box-shadow: 0 1px 3px #00000015; }
+    .weekdays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 8px; }
+    .weekdays span { text-align: center; font-size: 11px; color: #737373; font-weight: 500; }
+    .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .day { aspect-ratio: 1; border-radius: 8px; font-size: 13px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #F5F5F5; color: #737373; border: 1px solid #E5E5E5; gap: 2px; }
+    .day.registered { background: #DCFCE7; border: 2px solid #22C55E; color: #16A34A; font-weight: 600; }
+    .day.today { box-shadow: 0 0 0 2px #22C55E; }
+    .day .cat { font-size: 8px; font-weight: 500; opacity: 0.8; }
+    .day.outside { opacity: 0.3; }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="status"></div>
+    <div class="nav">
+      <span class="back">←</span>
+      <span class="nav-title">Historial</span>
+    </div>
+    <div class="content">
+      <div class="summary">
+        <strong>12 de 30 días</strong>
+        Últimos 30 días incluyendo hoy
+      </div>
+      <div class="toggle">
+        <span class="active">Calendario</span>
+        <span>Lista</span>
+      </div>
+      <div class="weekdays">
+        <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+      </div>
+      <div class="grid">
+        <div class="day outside">29</div><div class="day outside">30</div><div class="day">1</div><div class="day registered">2<span class="cat">torso</span></div><div class="day">3</div><div class="day registered">4<span class="cat">piernas</span></div><div class="day">5</div>
+        <div class="day registered">6</div><div class="day">7</div><div class="day registered">8</div><div class="day">9</div><div class="day registered">10</div><div class="day registered today">11<span class="cat">piernas</span></div><div class="day">12</div>
+        <div class="day">13</div><div class="day registered">14</div><div class="day">15</div><div class="day registered">16</div><div class="day">17</div><div class="day registered">18</div><div class="day">19</div>
+        <div class="day registered">20</div><div class="day">21</div><div class="day">22</div><div class="day registered">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div>
+        <div class="day">27</div><div class="day registered">28</div><div class="day">29</div><div class="day">30</div><div class="day registered">31</div><div class="day outside">1</div><div class="day outside">2</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

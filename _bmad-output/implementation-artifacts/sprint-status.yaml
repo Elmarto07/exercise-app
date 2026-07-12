@@ -1,0 +1,37 @@
+generated: 2026-07-11
+last_updated: 2026-07-12T21:51:00
+project: exercise-app
+project_key: marcafit
+tracking_system: file-system
+story_location: "_bmad-output/implementation-artifacts"
+
+development_status:
+  epic-1: done
+  1-1-initialize-nextjs-pwa: done
+  1-2-exercise-log-repository: done
+  1-3-serwist-pwa-offline: done
+  1-4-design-tokens-layout: done
+  1-5-pwa-install-banner: done
+  epic-1-retrospective: optional
+
+  epic-2: done
+  2-1-today-status-mark: done
+  2-2-unmark-workout: done
+  2-3-category-chips: done
+  2-4-post-workout-card: done
+  epic-2-retrospective: optional
+
+  epic-3: in-progress
+  3-1-history-summary-calendar: done
+  3-2-calendar-list-toggle: done
+  3-3-stretch-session-indicator: backlog
+  epic-3-retrospective: optional
+
+  epic-4: backlog
+  4-1-stretch-routines-json: backlog
+  4-2-daily-stretch-card: backlog
+  4-3-stretch-player: backlog
+  4-4-stretch-session-log: backlog
+  epic-4-retrospective: optional
+
+action_items: []
