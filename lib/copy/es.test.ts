@@ -38,4 +38,13 @@ describe("lib/copy/es", () => {
     expect(copy.pwaInstall.title).toBe("Añadir a inicio");
     expect(copy.offline.title).toBe("Sin conexión");
   });
+
+  it("exports history view strings", () => {
+    expect(copy.history.title).toBe("Historial");
+    expect(copy.history.summaryTemplate(5)).toBe("5 de 30 días");
+    expect(copy.history.viewCalendar).toBe("Calendario");
+    expect(copy.history.viewList).toBe("Lista");
+    expect(copy.history.noWorkout).toBe("Sin registro");
+    expect(copy.history.weekdays).toHaveLength(7);
+  });
 });
