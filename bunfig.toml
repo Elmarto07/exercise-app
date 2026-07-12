@@ -1,0 +1,3 @@
+[install]
+# No instalar versiones publicadas hace menos de 24 h (supply-chain guard)
+minimumReleaseAge = "1d"

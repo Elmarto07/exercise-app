@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Next.js
+.next/
+out/
+
+# Env
+.env*.local
+
+# Debug
+npm-debug.log*
+
+# Typescript
+*.tsbuildinfo
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
