@@ -285,5 +285,5 @@ flowchart TB
 | Backend PostgreSQL + sync | Fase 2 |
 | Push notifications | Non-goal MVP; iOS PWA limits |
 | Dark mode | Post-MVP per UX |
-| E2E test stack | Decidir en epic/story breakdown |
+| CI quality gate (Vitest + lint/typecheck; E2E Playwright ± Cucumber) | Post-MVP / tras Epic 4; ver addendum § Futuro — Quality gate en CI/CD |
 | Analytics / observability | Hobby personal; sin telemetría MVP |

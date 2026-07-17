@@ -1,0 +1,13 @@
+---
+description: Todas las ramas deben crearse desde main
+alwaysApply: true
+---
+
+# Git branching
+
+- **Base branch:** `main` is the only default base for new work.
+- Before creating a branch: `git checkout main`, then `git pull`, then `git checkout -b <tipo>/<nombre>`.
+- Naming: `feat/…`, `fix/…`, or `chore/…`.
+- Open pull requests against `main`.
+- Do **not** branch from another feature/fix/chore branch unless the user explicitly asks for a stacked branch.
+- If `main` is missing locally, fetch/create it from `origin/main` before starting new work — do not treat another long-lived feature branch as the default base.
