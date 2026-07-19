@@ -31,6 +31,13 @@ export default function HomePage() {
           {home.stretchNow}
         </button>
       </section>
+
+      <a
+        href="/history"
+        className="mt-auto pb-6 text-center text-base text-muted-foreground underline"
+      >
+        {home.historyLink}
+      </a>
     </main>
   );
 }

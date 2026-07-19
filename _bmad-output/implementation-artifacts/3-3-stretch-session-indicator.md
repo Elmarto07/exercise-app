@@ -4,7 +4,7 @@ baseline_commit: d9d037ce9391a44d84380aa877ae18bfe3bafaea
 
 # Story 3.3: Stretch Session indicator in History
 
-Status: ready-for-dev
+Status: review
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -27,46 +27,46 @@ So that stretching progress is separate from workout marks (FR-4, FR-15 visibili
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Domain — index stretch dates (AC: 1–6)
-  - [ ] Add `indexStretchDates(stretchSessions: StretchSession[]): Set<string>` (or equivalent Map) in `lib/domain/history-window.ts` — unique dates only
-  - [ ] Extend `HistoryListRow` with `hasStretchSession: boolean`
-  - [ ] Update `buildHistoryListRows(...)` to set `hasStretchSession` from the stretch date set
-  - [ ] Optional helper `dayHasStretchSession(date, stretchDates): boolean` if it clarifies calendar/list call sites
-  - [ ] Unit tests in `lib/domain/history-window.test.ts`:
+- [x] Task 1: Domain — index stretch dates (AC: 1–6)
+  - [x] Add `indexStretchDates(stretchSessions: StretchSession[]): Set<string>` (or equivalent Map) in `lib/domain/history-window.ts` — unique dates only
+  - [x] Extend `HistoryListRow` with `hasStretchSession: boolean`
+  - [x] Update `buildHistoryListRows(...)` to set `hasStretchSession` from the stretch date set
+  - [x] Optional helper `dayHasStretchSession(date, stretchDates): boolean` if it clarifies calendar/list call sites
+  - [x] Unit tests in `lib/domain/history-window.test.ts`:
     - stretch-only day → `hasStretchSession: true`, no `workoutDay`
     - workout + stretch → both
     - no stretch → false
     - two sessions same date → still one `true`
     - `countWorkoutDaysInRange` unchanged when only stretches exist
-- [ ] Task 2: Copy (AC: 2, 4, 8)
-  - [ ] Add `copy.history.stretchCompleted: "Estiramientos ✓"` (exact product string)
-  - [ ] Optional: `copy.history.stretchCompletedAria` (e.g. “Estiramientos completados”) for calendar dot `aria-label`
-  - [ ] Extend `lib/copy/es.test.ts`
-- [ ] Task 3: Hook (AC: 5–7)
-  - [ ] In `useHistory()`, derive stretch date set from `log.stretchSessions`
-  - [ ] Pass into `buildHistoryListRows` so `listRows` include `hasStretchSession`
-  - [ ] Expose `stretchDates: Set<string>` (or Map) for `HistoryCalendar`
-  - [ ] Do **not** change `summaryCount` formula
-- [ ] Task 4: Calendar UI — neutral dot (AC: 1, 3, 6)
-  - [ ] Update `components/history/history-calendar.tsx` props to accept stretch dates
-  - [ ] For `cell.inWindow` days with stretch: render secondary dot under the date number
-  - [ ] Dot color: `#737373` (`accent-stretch` / DESIGN `day-cell-stretch.dot`) — **never** primary/green (`#DCFCE7`, `#16A34A`, `border-primary`)
-  - [ ] Stretch-only: keep empty-cell styling (muted) + dot; registered + stretch: green cell + category short label + dot
-  - [ ] Padding / out-of-window cells: no stretch indicator
-  - [ ] Accessible name on the dot (aria-label from copy)
-- [ ] Task 5: List UI — “Estiramientos ✓” (AC: 2, 4, 6)
-  - [ ] Update `components/history/history-list.tsx` to show stretch copy when `row.hasStretchSession`
-  - [ ] Layout must show **both** workout status and stretch when both apply (do not replace category with stretch text)
-  - [ ] Recommended structure: left = date; right = stacked column — primary line = category or `noWorkout`; secondary muted line = `stretchCompleted` when `hasStretchSession`
-  - [ ] Stretch-only: keep `history.noWorkout` on primary line **and** stretch text on secondary line
-  - [ ] Stretch text: muted / secondary (`text-muted-foreground` or `#737373`) — not workout green
-- [ ] Task 6: Wire HistoryView if needed (AC: 1–4)
-  - [ ] Pass `stretchDates` into `HistoryCalendar` from `useHistory()` (`history-view.tsx`)
-  - [ ] Preserve WAI-ARIA tabs/tabpanels from Story 3.2 review patches
-- [ ] Task 7: Quality gates (AC: 1–8)
-  - [ ] `bun run test`, `bun run lint`, `bun run build` pass
-  - [ ] Manual seed (DevTools / temporary call): `exerciseLogRepository.addStretchSession({ date, routineType: "daily", routineId: "seed" })`
-  - [ ] Manual: stretch-only → calendar dot + list text, no green; both → both signals; summary unchanged; calendar ↔ list toggle still works
+- [x] Task 2: Copy (AC: 2, 4, 8)
+  - [x] Add `copy.history.stretchCompleted: "Estiramientos ✓"` (exact product string)
+  - [x] Optional: `copy.history.stretchCompletedAria` (e.g. “Estiramientos completados”) for calendar dot `aria-label`
+  - [x] Extend `lib/copy/es.test.ts`
+- [x] Task 3: Hook (AC: 5–7)
+  - [x] In `useHistory()`, derive stretch date set from `log.stretchSessions`
+  - [x] Pass into `buildHistoryListRows` so `listRows` include `hasStretchSession`
+  - [x] Expose `stretchDates: Set<string>` (or Map) for `HistoryCalendar`
+  - [x] Do **not** change `summaryCount` formula
+- [x] Task 4: Calendar UI — neutral dot (AC: 1, 3, 6)
+  - [x] Update `components/history/history-calendar.tsx` props to accept stretch dates
+  - [x] For `cell.inWindow` days with stretch: render secondary dot under the date number
+  - [x] Dot color: `#737373` (`accent-stretch` / DESIGN `day-cell-stretch.dot`) — **never** primary/green (`#DCFCE7`, `#16A34A`, `border-primary`)
+  - [x] Stretch-only: keep empty-cell styling (muted) + dot; registered + stretch: green cell + category short label + dot
+  - [x] Padding / out-of-window cells: no stretch indicator
+  - [x] Accessible name on the dot (aria-label from copy)
+- [x] Task 5: List UI — “Estiramientos ✓” (AC: 2, 4, 6)
+  - [x] Update `components/history/history-list.tsx` to show stretch copy when `row.hasStretchSession`
+  - [x] Layout must show **both** workout status and stretch when both apply (do not replace category with stretch text)
+  - [x] Recommended structure: left = date; right = stacked column — primary line = category or `noWorkout`; secondary muted line = `stretchCompleted` when `hasStretchSession`
+  - [x] Stretch-only: keep `history.noWorkout` on primary line **and** stretch text on secondary line
+  - [x] Stretch text: muted / secondary (`text-muted-foreground` or `#737373`) — not workout green
+- [x] Task 6: Wire HistoryView if needed (AC: 1–4)
+  - [x] Pass `stretchDates` into `HistoryCalendar` from `useHistory()` (`history-view.tsx`)
+  - [x] Preserve WAI-ARIA tabs/tabpanels from Story 3.2 review patches
+- [x] Task 7: Quality gates (AC: 1–8)
+  - [x] `bun run test`, `bun run lint`, `bun run build` pass
+  - [x] Manual seed (DevTools / temporary call): `exerciseLogRepository.addStretchSession({ date, routineType: "daily", routineId: "seed" })`
+  - [x] Manual: stretch-only → calendar dot + list text, no green; both → both signals; summary unchanged; calendar ↔ list toggle still works
 
 ## Dev Notes
 
@@ -207,14 +207,35 @@ Follow `docs/project-context.md`: Bun exclusive, Spanish UI via `lib/copy/es.ts`
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+Cursor Grok 4.5
 
 ### Debug Log References
 
+- Stacked implementation branch `feat/3-3-stretch-session-indicator` from `feat/epic-3-history` (`d9d037c`) because History UI is not on `main` yet.
+
 ### Completion Notes List
 
+- Domain: `indexStretchDates` + `dayHasStretchSession`; `HistoryListRow.hasStretchSession`; multi-session same day → one indicator
+- Copy: `stretchCompleted` ("Estiramientos ✓") + `stretchCompletedAria` for calendar dot
+- Hook: exposes `stretchDates` from `log.stretchSessions`; summary remains workout-only
+- Calendar: neutral `#737373` dot on in-window stretch days; stretch-only keeps muted empty cell (no green)
+- List: stacked right column — category/`noWorkout` + muted stretch line when present
+- Quality gates: 43 tests pass, lint clean, build OK
+
 ### File List
+
+- lib/domain/history-window.ts
+- lib/domain/history-window.test.ts
+- lib/hooks/use-history.ts
+- lib/copy/es.ts
+- lib/copy/es.test.ts
+- components/history/history-calendar.tsx
+- components/history/history-list.tsx
+- components/history/history-view.tsx
+- _bmad-output/implementation-artifacts/3-3-stretch-session-indicator.md
+- _bmad-output/implementation-artifacts/sprint-status.yaml
 
 ## Change Log
 
 - 2026-07-17: Story 3.3 created — ultimate context for Stretch Session indicator in History (ready-for-dev)
+- 2026-07-17: Story 3.3 implemented — stretch presence indicator in calendar/list; status → review
