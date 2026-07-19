@@ -34,6 +34,22 @@ export const copy = {
       confirm: "Quitar",
     },
   },
+  history: {
+    title: "Historial",
+    backToHome: "Volver al inicio",
+    summaryTemplate: (count: number) => `${count} de 30 días`,
+    summaryMeta: "Últimos 30 días incluyendo hoy",
+    calendarLabel: "Calendario de los últimos 30 días",
+    listLabel: "Lista de los últimos 30 días",
+    viewCalendar: "Calendario",
+    viewList: "Lista",
+    viewToggleLabel: "Tipo de vista del historial",
+    noWorkout: "Sin registro",
+    categoryUnspecified: "no especificado",
+    stretchCompleted: "Estiramientos ✓",
+    stretchCompletedAria: "Estiramientos completados",
+    weekdays: ["L", "M", "X", "J", "V", "S", "D"] as const,
+  },
 } as const;
 
 export type Copy = typeof copy;

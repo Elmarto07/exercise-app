@@ -60,3 +60,14 @@ Items deferred from code reviews and planning — not blocking current story.
 
 - **Hardcoded hex `#E5E5E5` on toggle track** — same pattern as history calendar cells; defer token extraction until design-token hardening pass.
 - **Midnight rollover stale `todayDate` in useHistory** — inherited from Story 2.1; list/calendar both use `todayLocalDate()` only on re-render.
+
+---
+
+## Future: CI/CD quality gate (post-MVP / after Epic 4)
+
+Tracked in PRD addendum § *Futuro — Quality gate en CI/CD* and Architecture Deferred.
+
+- **Required PR checks before merge to `main`:** GitHub Actions + branch protection.
+- **Phase A:** Vitest (`bun test`) + lint/typecheck — already matches current unit suite.
+- **Phase B:** Playwright E2E smoke for UJ-1/2/3 (mark/unmark, History, Stretch Player).
+- **Phase C (optional):** Cucumber + Playwright if Gherkin feature files are desired alongside epic ACs; not a substitute for Vitest.

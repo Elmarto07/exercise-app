@@ -1,5 +1,5 @@
 generated: 2026-07-11
-last_updated: 2026-07-12T21:51:00
+last_updated: 2026-07-17
 project: exercise-app
 project_key: marcafit
 tracking_system: file-system
@@ -24,7 +24,7 @@ development_status:
   epic-3: in-progress
   3-1-history-summary-calendar: done
   3-2-calendar-list-toggle: done
-  3-3-stretch-session-indicator: backlog
+  3-3-stretch-session-indicator: review
   epic-3-retrospective: optional
 
   epic-4: backlog

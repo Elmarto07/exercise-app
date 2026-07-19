@@ -110,6 +110,37 @@ Stretch Player (mismo reproductor)
 - Motivación: sync entre dispositivos si el uso diario lo exige
 - Migración: export JSON desde localStorage → import en Postgres
 
+## Futuro — Quality gate en CI/CD (antes de mergear PRs)
+
+**Objetivo:** ninguna PR mergea a `main` sin pasar checks automáticos en GitHub Actions (branch protection: required status checks).
+
+### Stack recomendado (encaje con el repo actual)
+
+| Capa | Herramienta | Rol en CI | Prioridad |
+|------|-------------|-----------|-----------|
+| Unit / domain | **Vitest** (ya en el repo: `bun test`) | Gate obligatorio temprano: domain, repository, hooks, copy | **Ahora / post-MVP inmediato** |
+| Lint / typecheck | `next lint` + `tsc --noEmit` | Gate barato en cada PR | Con el gate de Vitest |
+| E2E UI (flujos FR) | **Playwright** | Happy paths: marcar hoy, desmarcar, History, Stretch Player | Tras Epic 4 o cuando haya UI estable |
+| BDD opcional | **Cucumber** + Playwright | Solo si se quiere Gherkin legible alineado a AC (`Given/When/Then` de epics) | Opcional; no sustituye Vitest |
+
+**Por qué no Cucumber como único gate:** el MVP ya tiene criterios en formato Gherkin en `epics.md`, pero Cucumber añade fricción (step defs, sync de features) sin beneficio en lógica de dominio. Vitest cubre AD-1/AD-2/repository con feedback rápido. Cucumber aporta valor cuando se quieren escenarios E2E compartidos con humanos; Playwright solo suele bastar para hobby/PWA.
+
+### Pipeline mínimo (propuesta)
+
+```text
+PR → lint + typecheck → vitest run → [futuro] playwright → merge permitido
+```
+
+- Workflow: `.github/workflows/ci.yml` en cada PR hacia `main`.
+- Branch protection: exigir el job `ci` (y luego `e2e` cuando exista).
+- Sin secretos de backend en MVP; E2E contra build local o preview de Vercel.
+
+### Criterio de “listo para activar”
+
+1. CI con Vitest + lint/typecheck en verde y required en `main`.
+2. Suite E2E (Playwright ± Cucumber) con UJ-1 / UJ-2 / UJ-3 smoke.
+3. No bloquear el ciclo BMAD actual (Epic 3–4) por montar E2E prematuro.
+
 ## Information Architecture (actualizada)
 
 ```

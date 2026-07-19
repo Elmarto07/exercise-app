@@ -82,6 +82,8 @@ _This file contains critical rules and patterns that AI agents must follow when 
 
 ### Development Workflow Rules
 
+- **Git base branch: `main` — MANDATORY.** All feature, fix, and chore branches must be created from an up-to-date `main` (`git checkout main && git pull && git checkout -b <tipo>/<nombre>`). Do not branch from other feature branches unless the user explicitly requests a stacked branch.
+- Prefer short-lived branches named `feat/…`, `fix/…`, or `chore/…`; open PRs against `main`.
 - BMad artifacts live under `_bmad-output/` — do not mix planning docs into `app/`.
 - Story implementation follows `_bmad-output/implementation-artifacts/*.md` acceptance criteria.
 - Only commit when user explicitly asks.
@@ -109,4 +111,4 @@ _This file contains critical rules and patterns that AI agents must follow when 
 - Update when stack or tooling changes.
 - To change minimum release age, edit `bunfig.toml` and this file together.
 
-Last Updated: 2026-07-11
+Last Updated: 2026-07-17
