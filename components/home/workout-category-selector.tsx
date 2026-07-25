@@ -1,13 +1,19 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import {
   WORKOUT_CATEGORY_OPTIONS,
   isConcreteCategory,
+  toggleCategorySelection,
   type ConcreteWorkoutCategory,
 } from "@/lib/domain/categories";
 import type { WorkoutCategory } from "@/lib/domain/types";
 import { copy } from "@/lib/copy/es";
-import { omitTodayCategory, selectTodayCategory } from "@/lib/hooks/use-today";
+import {
+  omitTodayCategory,
+  selectTodayCategories,
+} from "@/lib/hooks/use-today";
 import { cn } from "@/lib/utils";
 
 type WorkoutCategorySelectorProps = {
@@ -25,17 +31,35 @@ export function WorkoutCategorySelector({
   suggestedCategory,
   onDismiss,
 }: WorkoutCategorySelectorProps) {
+  const [selected, setSelected] = useState<ConcreteWorkoutCategory[]>([]);
+
+  useEffect(() => {
+    if (!visible) {
+      setSelected([]);
+      return;
+    }
+
+    setSelected(
+      isConcreteCategory(suggestedCategory) ? [suggestedCategory] : [],
+    );
+  }, [visible, suggestedCategory]);
+
   if (!visible) {
     return null;
   }
 
   const { home } = copy;
-  const suggested = isConcreteCategory(suggestedCategory)
-    ? suggestedCategory
-    : null;
 
-  const handleSelect = (category: ConcreteWorkoutCategory) => {
-    selectTodayCategory(category);
+  const handleToggle = (category: ConcreteWorkoutCategory) => {
+    setSelected((current) => toggleCategorySelection(current, category));
+  };
+
+  const handleConfirm = () => {
+    if (selected.length === 0) {
+      return;
+    }
+
+    selectTodayCategories(selected);
     onDismiss();
   };
 
@@ -48,23 +72,22 @@ export function WorkoutCategorySelector({
     <div className="mt-2">
       <p className="text-[13px] text-muted-foreground">{home.categoryPrompt}</p>
       <div
-        role="radiogroup"
+        role="group"
         aria-label={home.categoryPrompt}
         className="mt-2 flex flex-wrap gap-2"
       >
         {WORKOUT_CATEGORY_OPTIONS.map((category) => {
-          const isSuggested = suggested === category;
+          const isSelected = selected.includes(category);
 
           return (
             <button
               key={category}
               type="button"
-              role="radio"
-              aria-checked={false}
-              onClick={() => handleSelect(category)}
+              aria-pressed={isSelected}
+              onClick={() => handleToggle(category)}
               className={cn(
                 "min-h-11 rounded-full border px-4 text-sm transition-colors",
-                isSuggested
+                isSelected
                   ? "border-primary bg-[#DCFCE7] font-medium text-[#16A34A]"
                   : "border-border bg-white text-foreground",
               )}
@@ -81,6 +104,14 @@ export function WorkoutCategorySelector({
           {home.omitCategory}
         </button>
       </div>
+      <button
+        type="button"
+        disabled={selected.length === 0}
+        onClick={handleConfirm}
+        className="mt-3 flex min-h-12 w-full items-center justify-center rounded-xl bg-primary text-base font-semibold text-primary-foreground disabled:opacity-40"
+      >
+        {home.confirmCategories}
+      </button>
     </div>
   );
 }

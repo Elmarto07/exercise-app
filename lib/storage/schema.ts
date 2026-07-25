@@ -1,3 +1,8 @@
+import {
+  isConcreteCategory,
+  normalizeCategories,
+  type ConcreteWorkoutCategory,
+} from "@/lib/domain/categories";
 import type {
   ExerciseLog,
   HistoryView,
@@ -41,7 +46,7 @@ export function createEmptyLog(): ExerciseLog {
   };
 }
 
-function isWorkoutDay(value: unknown): value is WorkoutDay {
+function hasValidWorkoutDayShape(value: unknown): boolean {
   if (typeof value !== "object" || value === null) {
     return false;
   }
@@ -53,6 +58,38 @@ function isWorkoutDay(value: unknown): value is WorkoutDay {
     typeof day.category === "string" &&
     WORKOUT_CATEGORIES.has(day.category as WorkoutCategory)
   );
+}
+
+function sanitizeCategoriesField(
+  value: unknown,
+): ConcreteWorkoutCategory[] | undefined {
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+
+  const concrete = value.filter(
+    (entry): entry is ConcreteWorkoutCategory =>
+      typeof entry === "string" &&
+      isConcreteCategory(entry as WorkoutCategory),
+  );
+  const normalized = normalizeCategories(concrete);
+  return normalized.length > 0 ? normalized : undefined;
+}
+
+function sanitizeWorkoutDay(value: unknown): WorkoutDay | null {
+  if (!hasValidWorkoutDayShape(value)) {
+    return null;
+  }
+
+  const day = value as Record<string, unknown>;
+  const category = day.category as WorkoutCategory;
+  const categories = sanitizeCategoriesField(day.categories);
+
+  if (categories) {
+    return { date: day.date as string, category, categories };
+  }
+
+  return { date: day.date as string, category };
 }
 
 function isStretchSession(value: unknown): value is StretchSession {
@@ -102,7 +139,9 @@ function sanitizeWorkoutDays(value: unknown): WorkoutDay[] {
     return [];
   }
 
-  return value.filter(isWorkoutDay);
+  return value
+    .map((day) => sanitizeWorkoutDay(day))
+    .filter((day): day is WorkoutDay => day !== null);
 }
 
 function sanitizeStretchSessions(value: unknown): StretchSession[] {

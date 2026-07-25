@@ -6,16 +6,19 @@ import type { ConcreteWorkoutCategory } from "@/lib/domain/categories";
 import { copy } from "@/lib/copy/es";
 import {
   formatRoutineDurationMeta,
-  getPostWorkoutRoutine,
+  getPostWorkoutRoutineForCategories,
 } from "@/lib/services/stretch-resolver";
 
 type PostWorkoutCardProps = {
-  category: ConcreteWorkoutCategory;
+  categories: ConcreteWorkoutCategory[];
   onDismiss: () => void;
 };
 
-export function PostWorkoutCard({ category, onDismiss }: PostWorkoutCardProps) {
-  const routine = getPostWorkoutRoutine(category);
+export function PostWorkoutCard({
+  categories,
+  onDismiss,
+}: PostWorkoutCardProps) {
+  const routine = getPostWorkoutRoutineForCategories(categories);
 
   if (!routine) {
     return null;

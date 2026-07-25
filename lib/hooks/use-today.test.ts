@@ -125,7 +125,9 @@ describe("selectTodayCategory", () => {
     selectTodayCategory("piernas");
 
     const log = exerciseLogRepository.getLog();
-    expect(log.workoutDays).toEqual([{ date: today, category: "piernas" }]);
+    expect(log.workoutDays).toEqual([
+      { date: today, category: "piernas", categories: ["piernas"] },
+    ]);
     expect(log.prefs.lastCategory).toBe("piernas");
   });
 });
