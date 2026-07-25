@@ -4,7 +4,7 @@ baseline_commit: d9d037ce9391a44d84380aa877ae18bfe3bafaea
 
 # Story 3.3: Stretch Session indicator in History
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -239,3 +239,4 @@ Cursor Grok 4.5
 
 - 2026-07-17: Story 3.3 created — ultimate context for Stretch Session indicator in History (ready-for-dev)
 - 2026-07-17: Story 3.3 implemented — stretch presence indicator in calendar/list; status → review
+- 2026-07-25: Code review clean — AC 1–8 satisfied; status → done
