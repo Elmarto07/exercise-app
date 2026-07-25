@@ -1,3 +1,7 @@
+import {
+  getEffectiveCategories,
+  type ConcreteWorkoutCategory,
+} from "@/lib/domain/categories";
 import { formatLocalDate } from "@/lib/domain/dates";
 import { copy } from "@/lib/copy/es";
 import type {
@@ -163,4 +167,33 @@ export function getCategoryShortLabel(category: WorkoutCategory): string {
     case "no-especificado":
       return "no esp.";
   }
+}
+
+const SHORT_ZONE: Record<ConcreteWorkoutCategory, string> = {
+  piernas: "P",
+  torso: "T",
+  cardio: "C",
+  "cuerpo-completo": "c. compl.",
+};
+
+export function getWorkoutDayDisplayLabel(day: WorkoutDay): string {
+  const categories = getEffectiveCategories(day);
+  if (categories.length === 0) {
+    return copy.history.categoryUnspecified;
+  }
+
+  return categories.map((category) => copy.home.categories[category]).join(" · ");
+}
+
+export function getWorkoutDayShortLabel(day: WorkoutDay): string {
+  const categories = getEffectiveCategories(day);
+  if (categories.length === 0) {
+    return "no esp.";
+  }
+
+  if (categories.length === 1) {
+    return getCategoryShortLabel(categories[0]!);
+  }
+
+  return categories.map((category) => SHORT_ZONE[category]).join("+");
 }

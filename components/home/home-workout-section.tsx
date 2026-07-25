@@ -5,27 +5,48 @@ import { useState } from "react";
 import { PostWorkoutCard } from "@/components/home/post-workout-card";
 import { WorkoutCategorySelector } from "@/components/home/workout-category-selector";
 import { WorkoutMarkButton } from "@/components/home/workout-mark-button";
-import { isConcreteCategory } from "@/lib/domain/categories";
-import type { WorkoutCategory } from "@/lib/domain/types";
+import {
+  categoriesSelectionKey,
+  getEffectiveCategories,
+} from "@/lib/domain/categories";
+import { useExerciseLog } from "@/lib/hooks/use-exercise-log";
 import { useToday } from "@/lib/hooks/use-today";
+import {
+  getPostWorkoutRoutineForCategories,
+  hasLoggedRoutineOnDate,
+} from "@/lib/services/stretch-resolver";
 
 export function HomeWorkoutSection() {
   const [showCategorySelector, setShowCategorySelector] = useState(false);
-  const [dismissedCategory, setDismissedCategory] =
-    useState<WorkoutCategory | null>(null);
-  const { isTodayMarked, todayWorkoutDay, lastCategory } = useToday();
+  const [dismissedKey, setDismissedKey] = useState<string | null>(null);
+  const { isTodayMarked, todayWorkoutDay, lastCategory, todayDate } =
+    useToday();
+  const log = useExerciseLog();
 
-  const category = todayWorkoutDay?.category;
+  const effectiveCategories = getEffectiveCategories(todayWorkoutDay);
+  const selectionKey = categoriesSelectionKey(effectiveCategories);
   const categoryPending =
-    isTodayMarked && todayWorkoutDay?.category === "no-especificado";
+    isTodayMarked &&
+    (todayWorkoutDay?.category === "no-especificado" ||
+      effectiveCategories.length === 0);
 
   const selectorVisible = showCategorySelector && categoryPending;
 
+  const postWorkoutRoutine =
+    getPostWorkoutRoutineForCategories(effectiveCategories);
+  const postWorkoutAlreadyDone = postWorkoutRoutine
+    ? hasLoggedRoutineOnDate(
+        log.stretchSessions,
+        todayDate,
+        postWorkoutRoutine.id,
+      )
+    : false;
+
   const showPostWorkout =
     isTodayMarked &&
-    category !== undefined &&
-    isConcreteCategory(category) &&
-    dismissedCategory !== category;
+    effectiveCategories.length > 0 &&
+    dismissedKey !== selectionKey &&
+    !postWorkoutAlreadyDone;
 
   return (
     <div>
@@ -33,7 +54,7 @@ export function HomeWorkoutSection() {
         onMarked={() => setShowCategorySelector(true)}
         onUnmarked={() => {
           setShowCategorySelector(false);
-          setDismissedCategory(null);
+          setDismissedKey(null);
         }}
       />
       <WorkoutCategorySelector
@@ -43,8 +64,8 @@ export function HomeWorkoutSection() {
       />
       {showPostWorkout ? (
         <PostWorkoutCard
-          category={category}
-          onDismiss={() => setDismissedCategory(category)}
+          categories={effectiveCategories}
+          onDismiss={() => setDismissedKey(selectionKey)}
         />
       ) : null}
     </div>

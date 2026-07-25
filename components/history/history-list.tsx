@@ -1,5 +1,5 @@
 import type { HistoryListRow } from "@/lib/domain/history-window";
-import { getCategoryDisplayLabel } from "@/lib/domain/history-window";
+import { getWorkoutDayDisplayLabel } from "@/lib/domain/history-window";
 import { formatHistoryListDate } from "@/lib/domain/dates";
 import { copy } from "@/lib/copy/es";
 import { cn } from "@/lib/utils";
@@ -43,7 +43,7 @@ export function HistoryList({ rows }: HistoryListProps) {
                   )}
                 >
                   {isRegistered && row.workoutDay
-                    ? getCategoryDisplayLabel(row.workoutDay.category)
+                    ? getWorkoutDayDisplayLabel(row.workoutDay)
                     : history.noWorkout}
                 </span>
                 {row.hasStretchSession ? (

@@ -9,6 +9,7 @@ describe("lib/copy/es", () => {
     expect(copy.home.alreadyMarked).toBe(
       "Ya registrado — toca para desmarcar",
     );
+    expect(copy.home.dailyStretchTitle).toBe("Rutina diaria");
     expect(copy.home.stretchNow).toBe("Estirar ahora");
     expect(copy.home.historyLink).toContain("Historial");
   });
@@ -19,6 +20,14 @@ describe("lib/copy/es", () => {
     );
     expect(copy.dialogs.unmarkWorkout.cancel).toBe("Cancelar");
     expect(copy.dialogs.unmarkWorkout.confirm).toBe("Quitar");
+  });
+
+  it("exports stretch player strings", () => {
+    expect(copy.dialogs.exitStretch.title).toBe("¿Salir de la rutina?");
+    expect(copy.stretch.completedTitle).toBe("Listo. Buen trabajo.");
+    expect(copy.stretch.pause).toBe("Pausa");
+    expect(copy.stretch.next).toBe("Siguiente");
+    expect(copy.stretch.progressTemplate(2, 5)).toBe("2 de 5");
   });
 
   it("exports workout category chip strings", () => {

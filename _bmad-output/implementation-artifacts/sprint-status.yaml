@@ -1,5 +1,5 @@
 generated: 2026-07-11
-last_updated: 2026-07-17
+last_updated: 2026-07-25
 project: exercise-app
 project_key: marcafit
 tracking_system: file-system
@@ -19,19 +19,20 @@ development_status:
   2-2-unmark-workout: done
   2-3-category-chips: done
   2-4-post-workout-card: done
+  2-5-multi-select-workout-category: review
   epic-2-retrospective: optional
 
   epic-3: in-progress
   3-1-history-summary-calendar: done
   3-2-calendar-list-toggle: done
-  3-3-stretch-session-indicator: review
+  3-3-stretch-session-indicator: done
   epic-3-retrospective: optional
 
-  epic-4: backlog
-  4-1-stretch-routines-json: backlog
-  4-2-daily-stretch-card: backlog
-  4-3-stretch-player: backlog
-  4-4-stretch-session-log: backlog
+  epic-4: in-progress
+  4-1-stretch-routines-json: done
+  4-2-daily-stretch-card: done
+  4-3-stretch-player: done
+  4-4-stretch-session-log: done
   epic-4-retrospective: optional
 
 action_items: []

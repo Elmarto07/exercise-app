@@ -1,8 +1,13 @@
 "use client";
 
+import {
+  isConcreteCategory,
+  normalizeCategories,
+  primaryCategoryFromSelection,
+  type ConcreteWorkoutCategory,
+} from "@/lib/domain/categories";
 import { todayLocalDate } from "@/lib/domain/dates";
 import type { ExerciseLog, WorkoutCategory, WorkoutDay } from "@/lib/domain/types";
-import { isConcreteCategory } from "@/lib/domain/categories";
 import { useExerciseLog } from "@/lib/hooks/use-exercise-log";
 import { exerciseLogRepository } from "@/lib/storage/exercise-log-repository";
 
@@ -35,8 +40,29 @@ export function selectTodayCategory(category: WorkoutCategory): void {
   }
 }
 
+export function selectTodayCategories(
+  categories: ConcreteWorkoutCategory[],
+): void {
+  const today = todayLocalDate();
+  const normalized = normalizeCategories(categories);
+  exerciseLogRepository.markWorkoutDay(
+    today,
+    primaryCategoryFromSelection(normalized),
+    normalized,
+  );
+
+  const primary = primaryCategoryFromSelection(normalized);
+  if (isConcreteCategory(primary)) {
+    exerciseLogRepository.updatePrefs({ lastCategory: primary });
+  }
+}
+
 export function omitTodayCategory(): void {
-  exerciseLogRepository.markWorkoutDay(todayLocalDate(), "no-especificado");
+  exerciseLogRepository.markWorkoutDay(
+    todayLocalDate(),
+    "no-especificado",
+    [],
+  );
 }
 
 export function useToday() {
@@ -52,6 +78,7 @@ export function useToday() {
     markToday,
     unmarkToday,
     selectTodayCategory,
+    selectTodayCategories,
     omitTodayCategory,
   };
 }

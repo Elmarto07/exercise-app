@@ -1,3 +1,4 @@
+import { DailyStretchCard } from "@/components/home/daily-stretch-card";
 import { TodayDate } from "@/components/home/today-date";
 import { HomeWorkoutSection } from "@/components/home/home-workout-section";
 import { PwaInstallBanner } from "@/components/home/pwa-install-banner";
@@ -19,18 +20,7 @@ export default function HomePage() {
 
       <HomeWorkoutSection />
 
-      <section className="rounded-xl border border-border bg-white p-4">
-        <h2 className="text-base font-semibold">{home.dailyStretchTitle}</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          {home.dailyStretchMeta}
-        </p>
-        <button
-          type="button"
-          className="mt-3 min-h-12 w-full rounded-xl border border-border bg-white text-base font-medium"
-        >
-          {home.stretchNow}
-        </button>
-      </section>
+      <DailyStretchCard />
 
       <a
         href="/history"

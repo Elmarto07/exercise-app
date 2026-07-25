@@ -90,7 +90,7 @@ FR-10: Epic 4 — Story 4.2
 FR-11: Epic 1 — Stories 1.3, 1.5
 FR-12: Epic 1 — Story 1.3; validado en Epic 2–4
 FR-13: Epic 1 — Story 1.4; reforzado en todas las epics UI
-FR-14: Epic 2 — Story 2.3
+FR-14: Epic 2 — Stories 2.3, 2.5
 FR-15: Epic 4 — Story 4.4
 
 ## Epic List
@@ -267,6 +267,26 @@ So that I stretch the right muscles post-training (FR-8, AD-5, UX-DR4).
 **When** Home renders
 **Then** Post-Workout card is not shown
 **And** Daily stretch card remains available (Epic 4)
+
+### Story 2.5: Multi-select Workout Category
+
+As a user,
+I want to select one or more training zones after marking today,
+So that post-workout stretches match a mixed session without forcing a single chip (FR-14, FR-8, AD-5).
+
+**Source:** Approved sprint change proposal 2026-07-19 — dual-write `category` + optional `categories[]`; one post-workout card; `cuerpo-completo` XOR vs zone chips. Implement after Epic 4 (4.1–4.4) unless PO reorders.
+
+**Acceptance Criteria:**
+
+**Given** chips after mark
+**When** I toggle piernas and torso and confirm (“Listo”)
+**Then** both are persisted in `categories[]` and legacy `category` primary is set
+**And** selecting cuerpo-completo clears other zones (and vice versa)
+**And** Omitir still persists `no-especificado` with no post-workout card
+**And** legacy WorkoutDays with only `category` still load and show post-workout as before
+**And** post-workout shows exactly one card (`getPostWorkoutRoutineForCategories`: single → existing map; multi or cuerpo-completo → `post-cuerpo-completo`)
+**And** History list/calendar display all selected zones readably
+**And** existing single-category APIs keep working; no wipe of valid v1 localStorage logs
 
 ---
 

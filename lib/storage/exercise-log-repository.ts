@@ -1,8 +1,15 @@
+import {
+  isConcreteCategory,
+  normalizeCategories,
+  primaryCategoryFromSelection,
+  type ConcreteWorkoutCategory,
+} from "@/lib/domain/categories";
 import type {
   ExerciseLog,
   StretchSession,
   UserPrefs,
   WorkoutCategory,
+  WorkoutDay,
 } from "@/lib/domain/types";
 import {
   createEmptyLog,
@@ -51,14 +58,35 @@ class ExerciseLogRepository {
     return this.snapshot;
   }
 
-  markWorkoutDay(date: string, category: WorkoutCategory = "no-especificado"): void {
+  markWorkoutDay(
+    date: string,
+    category: WorkoutCategory = "no-especificado",
+    categories?: ConcreteWorkoutCategory[],
+  ): void {
     const log = this.getMutableLog();
     const existingIndex = log.workoutDays.findIndex((day) => day.date === date);
 
-    if (existingIndex >= 0) {
-      log.workoutDays[existingIndex] = { date, category };
+    let next: WorkoutDay;
+    if (categories !== undefined) {
+      const normalized = normalizeCategories(categories);
+      next =
+        normalized.length === 0
+          ? { date, category: "no-especificado" }
+          : {
+              date,
+              category: primaryCategoryFromSelection(normalized),
+              categories: normalized,
+            };
+    } else if (isConcreteCategory(category)) {
+      next = { date, category, categories: [category] };
     } else {
-      log.workoutDays.push({ date, category });
+      next = { date, category: "no-especificado" };
+    }
+
+    if (existingIndex >= 0) {
+      log.workoutDays[existingIndex] = next;
+    } else {
+      log.workoutDays.push(next);
     }
 
     this.persist(log);

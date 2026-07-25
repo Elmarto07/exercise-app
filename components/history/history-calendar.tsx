@@ -1,7 +1,7 @@
 import type { HistoryDayCell } from "@/lib/domain/history-window";
 import {
   dayHasStretchSession,
-  getCategoryShortLabel,
+  getWorkoutDayShortLabel,
 } from "@/lib/domain/history-window";
 import type { WorkoutDay } from "@/lib/domain/types";
 import { copy } from "@/lib/copy/es";
@@ -54,7 +54,7 @@ export function HistoryCalendar({
               <span>{cell.dayOfMonth}</span>
               {isRegistered ? (
                 <span className="text-[8px] font-medium leading-none opacity-80">
-                  {getCategoryShortLabel(workoutDay.category)}
+                  {getWorkoutDayShortLabel(workoutDay)}
                 </span>
               ) : null}
               {hasStretch ? (

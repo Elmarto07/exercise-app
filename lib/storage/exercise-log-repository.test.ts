@@ -123,6 +123,7 @@ describe("lib/storage/exercise-log-repository", () => {
     expect(log.workoutDays[0]).toEqual({
       date: "2026-07-11",
       category: "torso",
+      categories: ["torso"],
     });
   });
 
