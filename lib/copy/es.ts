@@ -15,6 +15,7 @@ export const copy = {
     alreadyMarked: "Ya registrado — toca para desmarcar",
     categoryPrompt: "¿Qué entrenaste?",
     omitCategory: "Omitir",
+    confirmCategories: "Listo",
     categories: {
       piernas: "Piernas",
       torso: "Torso",
@@ -22,7 +23,6 @@ export const copy = {
       "cuerpo-completo": "Cuerpo completo",
     },
     dailyStretchTitle: "Rutina diaria",
-    dailyStretchMeta: "~5 min · cuello, hombros, cadera",
     stretchNow: "Estirar ahora",
     dismissPostWorkout: "Ahora no",
     historyLink: "Historial · últimos 30 días",
@@ -33,6 +33,24 @@ export const copy = {
       cancel: "Cancelar",
       confirm: "Quitar",
     },
+    exitStretch: {
+      title: "¿Salir de la rutina?",
+      cancel: "Cancelar",
+      confirm: "Salir",
+    },
+  },
+  stretch: {
+    progressTemplate: (current: number, total: number) =>
+      `${current} de ${total}`,
+    pause: "Pausa",
+    resume: "Reanudar",
+    next: "Siguiente",
+    exit: "Salir",
+    paused: "Pausado",
+    completedTitle: "Listo. Buen trabajo.",
+    backHome: "Volver al inicio",
+    notFoundTitle: "Rutina no encontrada",
+    notFoundBody: "Vuelve al inicio e intenta otra rutina.",
   },
   history: {
     title: "Historial",
