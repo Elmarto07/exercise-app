@@ -1,36 +1,205 @@
 {
   "routines": [
     {
+      "id": "daily",
+      "type": "daily",
+      "title": "Estiramiento diario",
+      "durationMinutes": 5,
+      "meta": "cuello, hombros, cadera",
+      "exercises": [
+        {
+          "id": "neck-side-bend",
+          "name": "Inclinación de cuello",
+          "durationSeconds": 45,
+          "instruction": "Inclina la oreja hacia el hombro sin encogerlo. Respira despacio y cambia de lado a mitad del tiempo."
+        },
+        {
+          "id": "neck-rotation",
+          "name": "Rotación suave de cuello",
+          "durationSeconds": 45,
+          "instruction": "Gira la mirada hacia un hombro manteniendo los hombros bajos. Cambia de lado a mitad del tiempo sin forzar el rango."
+        },
+        {
+          "id": "cross-body-shoulder",
+          "name": "Hombro cruzado",
+          "durationSeconds": 50,
+          "instruction": "Lleva un brazo por delante del pecho y sujétalo con el contrario a la altura del codo. Relaja el cuello y cambia de brazo a mitad del tiempo."
+        },
+        {
+          "id": "clasped-chest-opener",
+          "name": "Apertura de pecho",
+          "durationSeconds": 50,
+          "instruction": "Entrelaza las manos detrás de la espalda y abre el pecho hacia arriba con suavidad. Mantén la mirada al frente y respira profundo."
+        },
+        {
+          "id": "standing-hip-flexor",
+          "name": "Flexores de cadera",
+          "durationSeconds": 55,
+          "instruction": "Da un paso largo hacia delante y baja la cadera trasera sin arquear la espalda. Empuja el pubis ligeramente hacia delante y cambia de pierna a mitad del tiempo."
+        },
+        {
+          "id": "seated-figure-four",
+          "name": "Figura cuatro sentado",
+          "durationSeconds": 55,
+          "instruction": "Sentado, cruza un tobillo sobre la rodilla contraria e inclina el tronco hacia delante con la espalda larga. Cambia de pierna a mitad del tiempo."
+        }
+      ]
+    },
+    {
       "id": "post-piernas",
       "type": "post-workout",
       "title": "Estiramiento post-piernas",
       "durationMinutes": 4,
-      "meta": "isquios, cuádriceps, glúteos",
-      "exercises": []
+      "meta": "isquios, cuádriceps, glúteos, gemelos",
+      "exercises": [
+        {
+          "id": "standing-hamstring-fold",
+          "name": "Isquios de pie",
+          "durationSeconds": 50,
+          "instruction": "Apoya el talón delante con la rodilla suave y bascula la cadera hacia atrás. Mantén la espalda larga y respira sin rebotar."
+        },
+        {
+          "id": "standing-quad-hold",
+          "name": "Cuádriceps de pie",
+          "durationSeconds": 50,
+          "instruction": "Sujeta el tobillo detrás y acerca el talón al glúteo sin arquear la zona lumbar. Empuja la rodilla hacia abajo y cambia de pierna a mitad del tiempo."
+        },
+        {
+          "id": "seated-glute-stretch",
+          "name": "Glúteo sentado",
+          "durationSeconds": 50,
+          "instruction": "Sentado, coloca el tobillo sobre la rodilla contraria y acerca el pecho a la pierna cruzada. Mantén la pelvis estable y cambia de lado a mitad del tiempo."
+        },
+        {
+          "id": "wall-calf-stretch",
+          "name": "Gemelos en pared",
+          "durationSeconds": 45,
+          "instruction": "Apoya las manos en la pared, lleva una pierna atrás con el talón pegado al suelo y la rodilla estirada. Cambia de pierna a mitad del tiempo."
+        },
+        {
+          "id": "supine-hamstring-hold",
+          "name": "Isquios tumbado",
+          "durationSeconds": 45,
+          "instruction": "Tumbado boca arriba, eleva una pierna y sujétala por detrás del muslo. Acerca la pierna al pecho solo hasta notar tensión suave y cambia de lado a mitad del tiempo."
+        }
+      ]
     },
     {
       "id": "post-torso",
       "type": "post-workout",
       "title": "Estiramiento post-torso",
       "durationMinutes": 4,
-      "meta": "espalda, pecho, hombros",
-      "exercises": []
+      "meta": "pecho, hombros, dorsales, brazos",
+      "exercises": [
+        {
+          "id": "doorway-chest-stretch",
+          "name": "Pecho en pared",
+          "durationSeconds": 48,
+          "instruction": "Coloca el antebrazo en la pared a la altura del hombro y avanza el cuerpo un poco. Mantén el hombro lejos de la oreja y cambia de lado a mitad del tiempo."
+        },
+        {
+          "id": "posterior-shoulder-stretch",
+          "name": "Hombro posterior",
+          "durationSeconds": 48,
+          "instruction": "Cruza el brazo por delante del pecho y presiónalo suavemente con la mano contraria. Evita elevar el hombro y cambia de brazo a mitad del tiempo."
+        },
+        {
+          "id": "kneeling-lat-reach",
+          "name": "Dorsal de rodillas",
+          "durationSeconds": 48,
+          "instruction": "De rodillas, apoya una mano delante y deslízala hacia un lado sentando la cadera hacia el talón contrario. Respira hacia el costado y cambia de lado a mitad del tiempo."
+        },
+        {
+          "id": "overhead-triceps-stretch",
+          "name": "Tríceps arriba",
+          "durationSeconds": 48,
+          "instruction": "Lleva una mano detrás de la cabeza y usa la otra para acercar el codo con suavidad. Mantén las costillas quietas y cambia de brazo a mitad del tiempo."
+        },
+        {
+          "id": "thread-the-needle-hold",
+          "name": "Aguja e hilo",
+          "durationSeconds": 48,
+          "instruction": "A cuatro patas, desliza un brazo bajo el pecho hasta apoyar el hombro y la sien. Relaja el cuello y cambia de lado a mitad del tiempo."
+        }
+      ]
     },
     {
       "id": "post-cardio",
       "type": "post-workout",
       "title": "Estiramiento post-cardio",
       "durationMinutes": 3,
-      "meta": "piernas, cadera, respiración",
-      "exercises": []
+      "meta": "cadera, pantorrillas, respiración, espalda baja",
+      "exercises": [
+        {
+          "id": "kneeling-hip-flexor",
+          "name": "Cadera en zancada",
+          "durationSeconds": 45,
+          "instruction": "Arrodíllate con una pierna delante y deja caer la cadera hacia el suelo sin arquear la espalda. Empuja el pubis adelante y cambia de pierna a mitad del tiempo."
+        },
+        {
+          "id": "standing-calf-release",
+          "name": "Pantorrilla de pie",
+          "durationSeconds": 45,
+          "instruction": "Apoya el antepié en un escalón o contra el suelo y deja caer el talón con la rodilla estirada. Mantén el peso suave y cambia de pierna a mitad del tiempo."
+        },
+        {
+          "id": "seated-breath-fold",
+          "name": "Flexión con respiración",
+          "durationSeconds": 45,
+          "instruction": "Sentado con las piernas suaves, inclina el tronco hacia delante y deja caer los brazos. Alarga la exhalación para bajar el ritmo sin forzar la espalda."
+        },
+        {
+          "id": "supine-knee-hug",
+          "name": "Abrazo de rodillas",
+          "durationSeconds": 45,
+          "instruction": "Tumbado boca arriba, acerca ambas rodillas al pecho y balancea un poco la pelvis. Respira lento hacia la zona lumbar."
+        }
+      ]
     },
     {
       "id": "post-cuerpo-completo",
       "type": "post-workout",
       "title": "Estiramiento post-cuerpo completo",
       "durationMinutes": 5,
-      "meta": "tren superior e inferior",
-      "exercises": []
+      "meta": "cuello, pecho, costado, isquios, cadera",
+      "exercises": [
+        {
+          "id": "upper-trap-side-stretch",
+          "name": "Trapecio superior",
+          "durationSeconds": 50,
+          "instruction": "Inclina la oreja hacia el hombro y apoya la mano del mismo lado con peso muy suave. Mantén el hombro contrario abajo y cambia de lado a mitad del tiempo."
+        },
+        {
+          "id": "standing-chest-clasp",
+          "name": "Apertura de pecho de pie",
+          "durationSeconds": 50,
+          "instruction": "Entrelaza las manos detrás de la espalda, estira los brazos y abre el pecho sin arquear en exceso. Mantén la mirada al frente y respira amplio."
+        },
+        {
+          "id": "standing-side-reach",
+          "name": "Alcance lateral",
+          "durationSeconds": 50,
+          "instruction": "De pie, eleva un brazo por encima de la cabeza e inclina el tronco hacia el lado contrario sin rotar la pelvis. Alarga el costado con cada exhalación y cambia de lado a mitad del tiempo."
+        },
+        {
+          "id": "forward-fold-hamstring",
+          "name": "Isquios en flexión",
+          "durationSeconds": 50,
+          "instruction": "De pie con rodillas blandas, bascula la cadera hacia atrás y deja caer el tronco. Relaja la cabeza y evita rebotes."
+        },
+        {
+          "id": "pigeon-prep-hip",
+          "name": "Cadera tipo paloma",
+          "durationSeconds": 50,
+          "instruction": "Desde cuadrupedia, lleva una rodilla adelante y estira la otra pierna atrás manteniendo la pelvis cuadrada. Baja el pecho solo hasta sentir el glúteo y cambia de lado a mitad del tiempo."
+        },
+        {
+          "id": "wall-calf-cooldown",
+          "name": "Gemelo de enfriamiento",
+          "durationSeconds": 50,
+          "instruction": "Apoya las manos en la pared y coloca una pierna atrás con el talón firme. Mantén la rodilla estirada, respira despacio y cambia de pierna a mitad del tiempo."
+        }
+      ]
     }
   ]
 }
