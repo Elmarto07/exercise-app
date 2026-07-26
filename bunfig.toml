@@ -1,3 +1,4 @@
 [install]
-# No instalar versiones publicadas hace menos de 24 h (supply-chain guard)
-minimumReleaseAge = "1d"
+# No instalar versiones publicadas hace menos de 24 h (supply-chain guard).
+# Segundos (no "1d"): Vercel Bun aún no acepta duration strings.
+minimumReleaseAge = 86400

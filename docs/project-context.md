@@ -46,7 +46,7 @@ _This file contains critical rules and patterns that AI agents must follow when 
 - **Do:** `bun install` · `bun add <pkg>` · `bun remove <pkg>` · `bun run <script>` · `bun test` · `bunx <tool>`
 - **Never:** `npm`, `npx`, `pnpm`, `pnpm dlx`, `yarn`, `yarn dlx`
 - Lockfile: **`bun.lock`** (commit it). Do not create or commit `package-lock.json` or `pnpm-lock.yaml`.
-- Config: root **`bunfig.toml`** enforces `minimumReleaseAge = "1d"` — agents must not disable or lower this threshold.
+- Config: root **`bunfig.toml`** enforces `minimumReleaseAge = 86400` (24h, seconds) — agents must not disable or lower this threshold. Use seconds, not duration strings (Vercel Bun compatibility).
 - When adding dependencies, prefer exact or caret ranges on **versions already older than 1 day**; Bun filters fresh publishes automatically.
 - Do not add packages to `minimumReleaseAgeExcludes` without explicit user approval.
 - If a required version is blocked by age gate, report to user — do not bypass with npm.

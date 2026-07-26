@@ -4,7 +4,7 @@ baseline_commit: 9fe12c957265b6c0744be6b40a1561271bf3e050
 
 # Story 2.5: Multi-select Workout Category
 
-Status: review
+Status: done
 
 ## Story
 
@@ -58,3 +58,4 @@ So that post-workout stretches match a mixed session (FR-14, FR-8, AD-5).
 ## Change Log
 
 - 2026-07-19: Implemented multi-select; status → review
+- 2026-07-26: Merged via PR #5; MVP closed — status → done
