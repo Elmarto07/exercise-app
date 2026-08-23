@@ -3,9 +3,10 @@ import { randomUUID } from "node:crypto";
 
 import { createSerwistRoute } from "@serwist/turbopack";
 
-const revision =
-  spawnSync("git", ["rev-parse", "HEAD"], { encoding: "utf-8" }).stdout.trim() ||
-  randomUUID();
+const gitSha = spawnSync("git", ["rev-parse", "HEAD"], {
+  encoding: "utf-8",
+}).stdout?.trim();
+const revision = gitSha || randomUUID();
 
 export const { dynamic, dynamicParams, revalidate, generateStaticParams, GET } =
   createSerwistRoute({
