@@ -1,0 +1,12 @@
+services:
+  marcafit:
+    build: .
+    container_name: marcafit
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    mem_limit: 768m
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      HOSTNAME: 0.0.0.0

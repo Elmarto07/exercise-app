@@ -1,0 +1,14 @@
+node_modules
+.next
+.vercel
+.env
+.env.*
+.git
+.agents
+.cursor
+_bmad
+_bmad-output
+docs
+*.md
+.DS_Store
+Thumbs.db
